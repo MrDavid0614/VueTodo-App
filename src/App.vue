@@ -4,6 +4,7 @@
 </template>
 
 <script>
+import store from './store'
 import Tabs from '@/components/Tabs.vue'
 
 const tabs = [
@@ -30,6 +31,9 @@ export default {
     return {
       tabs
     }
+  },
+  provide: {
+    store
   },
   components: {
     Tabs

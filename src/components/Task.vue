@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import store from '../store'
 import Icon from './common/Icon.vue'
 import deleteIcon from '@/assets/icons/delete.svg'
 
@@ -36,13 +35,14 @@ export default {
       deleteIcon
     }
   },
+  inject: ['store'],
   methods: {
     changeTaskState (task) {
-      store.markCompletedMutation(task)
+      this.store.markCompletedMutation(task)
     },
     deleteTask (task) {
       if (confirm('Are you sure you want to delete this task?')) {
-        store.deleteTaskMutation(task)
+        this.store.deleteTaskMutation(task)
       }
     }
   },

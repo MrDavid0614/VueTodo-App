@@ -36,7 +36,6 @@
 </template>
 
 <script>
-import store from '../store'
 import Task from './Task.vue'
 import AddButton from './buttons/AddButton.vue'
 import DeleteButton from './buttons/DeleteButton.vue'
@@ -53,6 +52,7 @@ export default {
       newTaskDescription: ''
     }
   },
+  inject: ['store'],
   computed: {
     isActive () {
       return this.tab.selected
@@ -62,16 +62,16 @@ export default {
     },
     tasks () {
       const tasksByTabName = {
-        all: store.state.tasks,
-        active: store.getActiveTasksAction(),
-        completed: store.getCompletedTasksAction()
+        all: this.store.state.tasks,
+        active: this.store.getActiveTasksAction(),
+        completed: this.store.getCompletedTasksAction()
       }
       return tasksByTabName[this.tab.name.toLowerCase()]
     }
   },
   methods: {
     addNewTask () {
-      const { tasks } = store.state
+      const { tasks } = this.store.state
       if (!this.newTaskDescription) {
         alert("You can't create a task without a task description.")
         return
@@ -83,11 +83,11 @@ export default {
         completed: false
       }
       this.newTaskDescription = ''
-      store.addTaskMutation(newTask)
+      this.store.addTaskMutation(newTask)
     },
     deleteAllTasks () {
       if (confirm('Are you sure you want to delete all tasks?')) {
-        store.deleteAllTasksMutation()
+        this.store.deleteAllTasksMutation()
       }
     }
   },
