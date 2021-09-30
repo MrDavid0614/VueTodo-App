@@ -8,7 +8,7 @@ export default reactive({
   },
   addTaskMutation (task) {
     const { tasks } = this.state
-    tasks.push(task)
+    tasks.unshift(task)
     this.saveStateInLocalStorage()
   },
   markCompletedMutation (task) {
