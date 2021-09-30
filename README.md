@@ -10,7 +10,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://github.com/MrDavid0614/VueTodo-App">
+    <a href="https://devchallenges.io/solutions/futlk70lFwnASPcdbvxK">
       Solution
     </a>
     <span> | </span>
