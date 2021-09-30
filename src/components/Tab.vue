@@ -72,6 +72,11 @@ export default {
   methods: {
     addNewTask () {
       const { tasks } = store.state
+      if (!this.newTaskDescription) {
+        alert("You can't create a task without a task description.")
+        return
+      }
+
       const newTask = {
         id: tasks.length + 1,
         description: this.newTaskDescription,
